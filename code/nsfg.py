@@ -147,6 +147,8 @@ def main():
     assert preg.agepreg.value_counts()[22.75] == 100
     assert preg.totalwgt_lb.value_counts()[7.5] == 302
 
+    print(preg.columns)
+
     weights = preg.finalwgt.value_counts()
     key = max(weights.keys())
     assert preg.finalwgt.value_counts()[key] == 6
@@ -155,7 +157,10 @@ def main():
     # of entries in `preg`
     assert(ValidatePregnum(resp, preg))
 
-    
+    caseid= 10229
+    preg_map = MakePregMap(preg)
+    indices= preg_map[caseid]
+    print(preg.outcome[indices].values)
     print('All tests passed.')
 
 
